@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { test, expect } from '@playwright/test';
 
 test.describe('Articles - Creator Role', () => {
@@ -28,9 +29,9 @@ test.describe('Articles - Creator Role', () => {
     },
     async ({ page }) => {
       // Arrange
-      const commentBody = 'Testy na prodzie';
+      const commentBody = faker.lorem.sentence();
       await page.goto('articles.html');
-      await page.getByTestId('article-57-link').click();
+      await page.locator('.image-link').first().click();
 
       // Act
       await page.locator('#add-new').click();
@@ -41,7 +42,7 @@ test.describe('Articles - Creator Role', () => {
 
       // Assert
       await expect(page.locator('#containerComments')).toContainText(
-        'Testy na prodzie',
+        commentBody,
       );
     },
   );

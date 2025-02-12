@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { test, expect } from '@playwright/test';
 
 test.describe('Articles - Creator Role', () => {
@@ -28,8 +29,8 @@ test.describe('Articles - Creator Role', () => {
     },
     async ({ page }) => {
       // Arrange
-      const articleTitle = 'Article test';
-      const articleBody = 'Abracadabra';
+      const articleTitle = faker.lorem.sentence();
+      const articleBody = faker.lorem.paragraph();
 
       await page.goto('articles.html');
       await page.getByRole('button', { name: 'Add Article' }).click();
