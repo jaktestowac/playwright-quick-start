@@ -5,7 +5,7 @@
 **ID:** REQ-001
 
 - Users (viewer) can view all articles
-- Users can enter each article to view the full post
+- Users can enter each article to view the full article
 
 ### 2. Logged Users and Articles
 
