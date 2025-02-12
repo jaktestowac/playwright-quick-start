@@ -2,12 +2,22 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Articles - Creator Role', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/login/');
+    // Arrange
+    await page.goto('login/');
+    const userEmail = 'Moses.Armstrong@Feest.ca';
+    const userPassword = 'test1';
+
+    // Act
     await page
       .getByRole('textbox', { name: 'Enter User Email' })
-      .fill('Moses.Armstrong@Feest.ca');
-    await page.getByRole('textbox', { name: 'Enter Password' }).fill('test1');
+      .fill(userEmail);
+
+    await page
+      .getByRole('textbox', { name: 'Enter Password' })
+      .fill(userPassword);
     await page.getByRole('button', { name: 'LogIn' }).click();
+
+    // Assert
     await expect(page.getByTestId('hello')).toBeVisible();
   });
 
@@ -17,25 +27,31 @@ test.describe('Articles - Creator Role', () => {
       tag: '@REQ-002',
     },
     async ({ page }) => {
+      // Arrange
+      const articleTitle = 'Article test';
+      const articleBody = 'Abracadabra';
+
       await page.goto('articles.html');
       await page.getByRole('button', { name: 'Add Article' }).click();
+
+      // Act
       await page.getByTestId('title-input').click();
-      await page.getByTestId('title-input').fill('Article test');
+      await page.getByTestId('title-input').fill(articleTitle);
       await page.getByTestId('body-text').click();
-      await page.getByTestId('body-text').fill('Abracadabra');
+      await page.getByTestId('body-text').fill(articleBody);
       await page.getByTestId('save').click();
       await page.getByTestId('alert-popup').click();
-      await expect(page.locator('alert-popup')).toContainText(
+
+      // Assert
+      await expect(page.getByTestId('alert-popup')).toContainText(
         'Article was created',
       );
       await expect(page.locator('#article-image')).toBeVisible();
       await expect(page.getByTestId('article-body')).toBeVisible();
-      await expect(page.getByTestId('article-body')).toContainText(
-        'Abracadabra',
-      );
+      await expect(page.getByTestId('article-body')).toContainText(articleBody);
       await expect(page.getByTestId('article-title')).toBeVisible();
       await expect(page.getByTestId('article-title')).toContainText(
-        'Article test',
+        articleTitle,
       );
     },
   );
