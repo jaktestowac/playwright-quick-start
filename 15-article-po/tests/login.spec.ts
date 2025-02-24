@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/login.page';
-import { WelcomePage } from '../src/pages/welcome.page';
 
 test('should log in with valid credentials (recorded)', async ({ page }) => {
   const userEmail = 'Moses.Armstrong@Feest.ca';
