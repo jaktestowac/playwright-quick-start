@@ -23,7 +23,9 @@ Multirepo with test framework used to demonstrate quick start with Playwright:
 We are **Test Architects and Senior Lead Tech Quality Engineers**, who are passionate about testing.
 We are constantly looking for new ways to improve our skills and share our knowledge with others.
 
-We are here to help you become a better tester and achieve your testing goals!
+We are actively involved in the Playwright community, contributing to the project and sharing our knowledge with others. We have been using Playwright in **different companies and projects since 2021**.
+
+We believe in the power of open source and the importance of giving back to the community.
 
 Read more about our **[Contribution to Playwright and Community](https://jaktestowac.pl/contribution-playwright/)**
 
@@ -51,7 +53,7 @@ Before you start, make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/jaktestowac/bughuntfest-playwright-patterns.git
+   git clone https://github.com/jaktestowac/playwright-quick-start.git
    cd bughuntfest-playwright-patterns/tests-gad
    ```
 
